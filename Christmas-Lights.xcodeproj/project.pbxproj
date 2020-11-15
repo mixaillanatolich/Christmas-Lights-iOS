@@ -31,10 +31,14 @@
 		054489D323F9B3B5009D8A67 /* ExtObjectOrNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054489C723F9B3B5009D8A67 /* ExtObjectOrNil.swift */; };
 		054489D423F9B3B5009D8A67 /* LogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054489C823F9B3B5009D8A67 /* LogsHelper.swift */; };
 		054BCEDA23FEB9D70075A11C /* SliderSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BCED923FEB9D70075A11C /* SliderSetting.swift */; };
+		055EA3C12559B837004B3A78 /* SetModeCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055EA3C02559B837004B3A78 /* SetModeCommand.swift */; };
+		055EA3C42559B8EB004B3A78 /* CommonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055EA3C32559B8EB004B3A78 /* CommonRequest.swift */; };
 		057701A223FAA7B200E3C0E7 /* LedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057701A123FAA7B200E3C0E7 /* LedControlViewController.swift */; };
 		057701A423FAC6F900E3C0E7 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057701A323FAC6F900E3C0E7 /* UserDefaultWrapper.swift */; };
 		058A28D023FC196F0092C0CB /* GyverStateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A28CF23FC196F0092C0CB /* GyverStateResponse.swift */; };
 		058A28D223FC19910092C0CB /* GyverSetStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A28D123FC19910092C0CB /* GyverSetStateRequest.swift */; };
+		05B9C4CB255B004C008A3A07 /* CommonStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9C4CA255B004C008A3A07 /* CommonStatusResponse.swift */; };
+		05B9C4CE255B0160008A3A07 /* SendCommandResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9C4CD255B0160008A3A07 /* SendCommandResponse.swift */; };
 		05CCA72C23FC648A00AA3C7F /* GyverStateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CCA72B23FC648A00AA3C7F /* GyverStateCommand.swift */; };
 		05F4593C23FFF340000F7C97 /* LedModeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4593B23FFF340000F7C97 /* LedModeEnum.swift */; };
 		ADAC00E246C7FBA3A0D4377D /* Pods_Christmas_Lights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD15E2B276BEF470DDC0111 /* Pods_Christmas_Lights.framework */; };
@@ -67,10 +71,14 @@
 		054489C723F9B3B5009D8A67 /* ExtObjectOrNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtObjectOrNil.swift; sourceTree = "<group>"; };
 		054489C823F9B3B5009D8A67 /* LogsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsHelper.swift; sourceTree = "<group>"; };
 		054BCED923FEB9D70075A11C /* SliderSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSetting.swift; sourceTree = "<group>"; };
+		055EA3C02559B837004B3A78 /* SetModeCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetModeCommand.swift; sourceTree = "<group>"; };
+		055EA3C32559B8EB004B3A78 /* CommonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequest.swift; sourceTree = "<group>"; };
 		057701A123FAA7B200E3C0E7 /* LedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedControlViewController.swift; sourceTree = "<group>"; };
 		057701A323FAC6F900E3C0E7 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		058A28CF23FC196F0092C0CB /* GyverStateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyverStateResponse.swift; sourceTree = "<group>"; };
 		058A28D123FC19910092C0CB /* GyverSetStateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyverSetStateRequest.swift; sourceTree = "<group>"; };
+		05B9C4CA255B004C008A3A07 /* CommonStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStatusResponse.swift; sourceTree = "<group>"; };
+		05B9C4CD255B0160008A3A07 /* SendCommandResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommandResponse.swift; sourceTree = "<group>"; };
 		05CCA72B23FC648A00AA3C7F /* GyverStateCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyverStateCommand.swift; sourceTree = "<group>"; };
 		05F4593B23FFF340000F7C97 /* LedModeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedModeEnum.swift; sourceTree = "<group>"; };
 		3D33D5B3957431455BC05624 /* Pods-Christmas-Lights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Christmas-Lights.debug.xcconfig"; path = "Target Support Files/Pods-Christmas-Lights/Pods-Christmas-Lights.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +152,10 @@
 				05CCA72B23FC648A00AA3C7F /* GyverStateCommand.swift */,
 				058A28D123FC19910092C0CB /* GyverSetStateRequest.swift */,
 				058A28CF23FC196F0092C0CB /* GyverStateResponse.swift */,
+				055EA3C32559B8EB004B3A78 /* CommonRequest.swift */,
+				055EA3C02559B837004B3A78 /* SetModeCommand.swift */,
+				05B9C4CA255B004C008A3A07 /* CommonStatusResponse.swift */,
+				05B9C4CD255B0160008A3A07 /* SendCommandResponse.swift */,
 			);
 			path = BLE;
 			sourceTree = "<group>";
@@ -346,9 +358,12 @@
 				054489B823F9B218009D8A67 /* DiscoveredDeviceTableViewCell.swift in Sources */,
 				054489D123F9B3B5009D8A67 /* ExtData.swift in Sources */,
 				05F4593C23FFF340000F7C97 /* LedModeEnum.swift in Sources */,
+				05B9C4CE255B0160008A3A07 /* SendCommandResponse.swift in Sources */,
 				054489CD23F9B3B5009D8A67 /* BLEDevicePeripheral.swift in Sources */,
 				057701A223FAA7B200E3C0E7 /* LedControlViewController.swift in Sources */,
 				0544899523F9B055009D8A67 /* AppDelegate.swift in Sources */,
+				05B9C4CB255B004C008A3A07 /* CommonStatusResponse.swift in Sources */,
+				055EA3C12559B837004B3A78 /* SetModeCommand.swift in Sources */,
 				054489D023F9B3B5009D8A67 /* BLEResponseFactory.swift in Sources */,
 				054489D423F9B3B5009D8A67 /* LogsHelper.swift in Sources */,
 				054489CC23F9B3B5009D8A67 /* BLEResponse.swift in Sources */,
@@ -363,6 +378,7 @@
 				054489B923F9B218009D8A67 /* LaunchViewController.swift in Sources */,
 				054489B723F9B218009D8A67 /* DevicePairViewController.swift in Sources */,
 				054BCEDA23FEB9D70075A11C /* SliderSetting.swift in Sources */,
+				055EA3C42559B8EB004B3A78 /* CommonRequest.swift in Sources */,
 				054489CA23F9B3B5009D8A67 /* BLEError.swift in Sources */,
 				054489C923F9B3B5009D8A67 /* BLEPeripheral.swift in Sources */,
 			);
