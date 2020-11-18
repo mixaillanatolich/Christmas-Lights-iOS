@@ -6,8 +6,7 @@
 //  Copyright © 2020 M-Technologies. All rights reserved.
 //
 
-import UIKit
-
+import Foundation
 
 let LEDController = LedControlManager.sharedInstance
 
@@ -25,6 +24,9 @@ enum LedSolidColors: UInt32 {
 
 class LedControlManager: NSObject {
     
+    typealias SettigsCallbackClosure = (_ settings: LightsStateResponse) -> Void
+    var settingsallback: SettigsCallbackClosure?
+    
     public static let sharedInstance: LedControlManager = {
         let instance = LedControlManager()
         return instance
@@ -37,16 +39,29 @@ class LedControlManager: NSObject {
     func sendPing(callback: @escaping (_ isSuccess: Bool) -> Void) {
         makeCommandAndSend(data: Data([0x00]),
                            isWaitResponse: true, isWriteWithResponse: true,
-                           command: GyverStateCommand.self) { (status, response) in
-                            callback(status && response != nil)
+                           command: LedStateCommand.self) { (status, response) in
+            DispatchQueue.main.async {
+                callback(status && response != nil)
+            }
         }
     }
     
-    func loadSetting(callback: @escaping (_ isSuccessful: Bool, _ response: GyverStateResponse?) -> Void) {
+    func loadSetting(callback: @escaping (_ isSuccessful: Bool, _ response: LightsStateResponse?) -> Void) {
         makeCommandAndSend(data: Data([0x01]),
                            isWaitResponse: true, isWriteWithResponse: true,
-                           command: GyverStateCommand.self) { (status, response) in
-                            callback(status, response as? GyverStateResponse)
+                           command: LedStateCommand.self) { (status, response) in
+            DispatchQueue.main.async {
+                guard status, let response = response else {
+                    callback(false, nil)
+                    return
+                }
+                
+                if response is LightsStateResponse {
+                    callback(true, (response as! LightsStateResponse))
+                } else {
+                    callback(false, nil)
+                }
+            }
         }
     }
     
@@ -56,7 +71,19 @@ class LedControlManager: NSObject {
         makeCommandAndSend(data: Data([commandId, modeId]),
                            isWaitResponse: true, isWriteWithResponse: true,
                            command: SetModeCommand.self) { (status, response) in
-                            callback(status)
+            
+            DispatchQueue.main.async {
+                guard status, let response = response else {
+                    callback(false)
+                    return
+                }
+                
+                if response is CommonStatusResponse {
+                    callback((response as! CommonStatusResponse).status)
+                } else {
+                    callback(false)
+                }
+            }
         }
     }
     
@@ -79,7 +106,7 @@ class LedControlManager: NSObject {
     }
     
     func stopCmd(callback: @escaping (_ isSuccessful: Bool) -> Void) {
-        sendCommand(0x19, callback: callback)
+        sendCommand(0x20, callback: callback)
     }
     
     //MARK: - led count
@@ -161,14 +188,6 @@ class LedControlManager: NSObject {
 //    func Cmd(callback: @escaping (_ isSuccessful: Bool) -> Void) {
 //        sendCommand(0x, callback: callback)
 //    }
-//
-//    func Cmd(callback: @escaping (_ isSuccessful: Bool) -> Void) {
-//        sendCommand(0x, callback: callback)
-//    }
-//
-//    func Cmd(callback: @escaping (_ isSuccessful: Bool) -> Void) {
-//        sendCommand(0x, callback: callback)
-//    }
     
     fileprivate func sendCommand(_ command: UInt32, callback: @escaping (_ isSuccessful: Bool) -> Void) {
         let commandId:UInt8 = 0x02
@@ -185,8 +204,12 @@ class LedControlManager: NSObject {
         
         makeCommandAndSend(data: commandData,
                            isWaitResponse: true, isWriteWithResponse: true,
-                           command: SetModeCommand.self) { (status, response) in
-                            callback(status)
+                           command: SendCmdCommand.self) { (status, response) in
+            callback(status)
+            guard status, let response = response, response is LightsStateResponse else { return }
+            DispatchQueue.main.async {
+                self.settingsallback?(response as! LightsStateResponse)
+            }
         }
     }
     

@@ -6,12 +6,12 @@
 //  Copyright © 2020 M-Technologies. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class GyverStateCommand: BLECommand {
+class LedStateCommand: BLECommand {
     
     override func handleResponse() -> Bool {
-        guard let response = GyverStateResponse(rawData: rawResponse) else {
+        guard let response = LightsStateResponse(rawData: rawResponse) else {
             return false
         }
         

@@ -461,7 +461,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wlT-n9-8JW">
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="46"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palette:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlZ-WL-ovx">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palette:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="KlZ-WL-ovx">
                                                         <rect key="frame" x="16" y="0.0" width="67" height="46"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" systemColor="systemOrangeColor"/>
@@ -620,14 +620,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3J-Qq-SLg">
                                                 <rect key="frame" x="138" y="0.0" width="138" height="46"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jn-k0-60G">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jn-k0-60G">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="46"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Candles On">
-                                                            <color key="titleColor" systemColor="systemGreenColor"/>
-                                                        </state>
-                                                        <state key="selected" title="Candles Off">
+                                                        <state key="normal" title="Candles Off">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <state key="selected" title="Candles On">
+                                                            <color key="titleColor" systemColor="systemGreenColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="candleButtonClicked:" destination="bn8-RC-DaQ" eventType="touchUpInside" id="fgy-7I-S5h"/>
@@ -645,14 +645,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6q-na-xhB">
                                                 <rect key="frame" x="276" y="0.0" width="138" height="46"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIF-D6-ris">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIF-D6-ris">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="46"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Backgroud On">
-                                                            <color key="titleColor" systemColor="systemGreenColor"/>
-                                                        </state>
-                                                        <state key="selected" title="Backgroud Off">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <state key="selected" title="Backgroud On">
+                                                            <color key="titleColor" systemColor="systemGreenColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="backgroudButtonClicked:" destination="bn8-RC-DaQ" eventType="touchUpInside" id="5fW-7I-NYf"/>

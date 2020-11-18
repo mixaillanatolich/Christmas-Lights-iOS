@@ -50,6 +50,10 @@ class LedControlViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        LEDController.settingsallback = { (settings) in
+            self.parseSettings(settings)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +65,23 @@ class LedControlViewController: BaseViewController {
         screenDidShow()
     }
     
+    fileprivate func parseSettings(_ response: LightsStateResponse) {
+
+        dLog("\n\tsettings \n\teffectId: \(response.effectId) \n\tledMode: \(response.ledMode.rawValue) \n\tglitterEnabled: \(response.glitterEnabled) \n\tcandleEnabled: \(response.candleEnabled) \n\tbackgroudEnabled: \(response.candleEnabled)")
+        
+        stopButton.isSelected = response.ledMode == .off
+        shuffleButton.isSelected = response.ledMode == .allShuffle || response.ledMode == .userShuffle
+        
+        if response.effectId < effects.count {
+            effectsTable.selectRow(at: IndexPath(row: response.effectId, section: 0), animated: true, scrollPosition: .middle)
+        }
+        
+        glitterButton.isSelected = response.glitterEnabled
+        candleButton.isSelected = response.candleEnabled
+        backgroudButton.isSelected = response.backgroudEnabled
+    }
+    
+    //MARK: -
     @IBAction func pairButtonClicked(_ sender: Any) {
         self.performSegue(withIdentifier: "ShowPairScreen", sender: {(destVC: UIViewController) in
             destVC.presentationController?.delegate = self
@@ -73,7 +94,9 @@ class LedControlViewController: BaseViewController {
 //            }
             
         LEDController.loadSetting(callback: { (result, response) in
-//            self.parseSettings(response: response)
+            if result {
+                self.parseSettings(response!)
+            }
         })
     }
     
@@ -345,6 +368,9 @@ extension LedControlViewController {
                 DispatchQueue.main.async {
                     self.controlLabel.textColor = UIColor.green
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.buttonClicked(self)
+                }
             } else if connectStatus == .error || connectStatus == .timeoutError || connectStatus == .disconected {
                 DispatchQueue.main.async {
                     self.controlLabel.textColor = UIColor.yellow
@@ -374,7 +400,8 @@ extension LedControlViewController {
         self.controlLabel.textColor = UIColor.yellow
         BLEManager.connectToDevice(peripheral, deviceType: .expectedDevice,
                                    serviceIds: [CBUUID(string: "FFE0")],
-                                   characteristicIds: [CBUUID(string: "FFE1")], timeout: 30.0)
+                                   characteristicIds: [CBUUID(string: "FFE1")],
+                                   device: LedDevicePeripheral.self, timeout: 30.0)
     }
     
 }
@@ -437,9 +464,10 @@ extension LedControlViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         LEDController.setMode(indexPath.row) { (res) in
-            dLog("set mode \(res)")
+            if !res {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
 }

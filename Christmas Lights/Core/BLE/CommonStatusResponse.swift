@@ -6,7 +6,7 @@
 //  Copyright © 2020 M-Technologies. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class CommonStatusResponse: BLEResponse {
     var status: Bool!
@@ -18,7 +18,7 @@ class CommonStatusResponse: BLEResponse {
             return nil
         }
         
-        guard data.count >= 3 && data[0] == 0x24 else {
+        guard data.count >= 3 && data[0] == 0xA0 else {
             return nil
         }
         

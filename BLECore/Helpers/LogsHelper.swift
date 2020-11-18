@@ -9,7 +9,8 @@ import Foundation
 
 #if DEBUG
 func dLog(_ message: String, filename: String = #file, function: String = #function, line: Int = #line) {
-    print("[\(NSURL(fileURLWithPath: filename).lastPathComponent.orNil):\(line)] \(function) - \(message)")
+    //print("[\(NSURL(fileURLWithPath: filename).lastPathComponent.orNil):\(line)] \(function) - \(message)")
+    NSLog("[\(NSURL(fileURLWithPath: filename).lastPathComponent.orNil):\(line)] \(function) - %@", message)
 }
 func dNSLog(_ message: String, filename: String = #file, function: String = #function, line: Int = #line) {
     NSLog("[\(NSURL(fileURLWithPath: filename).lastPathComponent.orNil):\(line)] \(function) - %@", message)
